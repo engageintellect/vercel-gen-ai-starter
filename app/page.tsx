@@ -10,10 +10,13 @@ export default function Page() {
   const { submitUserMessage } = useActions<typeof AI>();
 
   return (
-    <div className="max-w-3xl mx-auto p-5">
+    <div className="">
       <div>
         {
-          <div className="flex flex-col gap-5 py-5">
+          <div className="flex flex-col gap-5 p-5 w-full max-w-3xl mx-auto pb-[95px] p">
+            {messages.length === 0 && (
+              <div className="text-3xl">Hi! How can I help you today?</div>
+            )}
             {messages.map(
               (message: { id: number; role: any; display: JSX.Element }) => (
                 <div key={message.id}>
@@ -23,9 +26,7 @@ export default function Page() {
                     </div>
                   ) : (
                     <div className="chat chat-start">
-                      <div className="chat-bubble chat-bubble">
-                        {message.display}
-                      </div>
+                      <div className="chat-bubble">{message.display}</div>
                     </div>
                   )}
                 </div>
@@ -33,41 +34,44 @@ export default function Page() {
             )}
           </div>
         }
+      </div>
 
-        <form
-          onSubmit={async (e) => {
-            e.preventDefault();
+      <form
+        className="fixed bottom-0 w-full"
+        onSubmit={async (e) => {
+          e.preventDefault();
 
-            // Add user message to UI state
-            setMessages((currentMessages: typeof messages) => [
-              ...currentMessages,
-              {
-                id: Date.now(),
-                role: "user",
-                display: <div>{inputValue}</div>,
-              },
-            ]);
+          // Add user message to UI state
+          setMessages((currentMessages: typeof messages) => [
+            ...currentMessages,
+            {
+              id: Date.now(),
+              role: "user",
+              display: <div>{inputValue}</div>,
+            },
+          ]);
 
-            // Submit and get response message
-            const responseMessage = await submitUserMessage(inputValue);
-            setMessages((currentMessages: typeof messages) => [
-              ...currentMessages,
-              responseMessage,
-            ]);
+          // Submit and get response message
+          const responseMessage = await submitUserMessage(inputValue);
+          setMessages((currentMessages: typeof messages) => [
+            ...currentMessages,
+            responseMessage,
+          ]);
 
-            setInputValue("");
-          }}
-        >
+          setInputValue("");
+        }}
+      >
+        <div className="bg-base-300 flex justify-center p-5">
           <input
-            className="input input-bordered w-full"
+            className="input input-bordered w-full max-w-3xl mx-auto"
             placeholder="Send a message..."
             value={inputValue}
             onChange={(event) => {
               setInputValue(event.target.value);
             }}
           />
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }
