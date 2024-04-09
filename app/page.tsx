@@ -28,7 +28,7 @@ export default function Page() {
             ) : (
               <div className="sticky top-0 -z-[-1] p-5">
                 <button
-                  className="btn btn-primary capitalize"
+                  className="btn btn-primary capitalize shadow outline outline-base-100"
                   onClick={() => clearChat()}
                 >
                   clear chat
