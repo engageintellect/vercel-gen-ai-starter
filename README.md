@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# vercel-gen-ai-starter
+
+## Description
+
+This is a starter project for a Next.js app that uses the [Vercel AI](https://vercel.com/docs/ai) API to generate text, /UI elements, images, and more.
+
+### Technologies used:
+
+- [Next.js](https://nextjs.org/)
+- [Vercel AI](https://vercel.com/docs/ai)
+- [OpenAI](https://openai.com/)
 
 ## Getting Started
 

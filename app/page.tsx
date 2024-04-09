@@ -16,10 +16,10 @@ export default function Page() {
     <div className="">
       <div>
         {
-          <div className="flex flex-col gap-5 p-5 w-full max-w-3xl mx-auto pb-[95px] p">
+          <div className="flex flex-col gap-5 p-5 w-full max-w-3xl mx-auto pb-[95px]">
             {messages.length === 0 ? (
-              <div className="my-10">
-                <div className="text-3xl">Hi! How can I help you today?</div>
+              <div className="p-5">
+                <div className="text-3xl">Hello! How can I help you today?</div>
                 <div className=" text-xl font-thin">
                   say something like &quot;give me flight info for AA 200&quot;
                   to generate UI elements.
